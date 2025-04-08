@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend API Test</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background-color: #f4f4f4; color: #333; }
+    .container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h1 { color: #0056b3; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; margin-top: 10px; }
+    button:hover { background-color: #0056b3; }
+    #result { margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 4px; background-color: #e9ecef; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; }
+    .success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+    .error { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Backend Health Check</h1>
+    <p>This page tests the connection to the backend API's health endpoint.</p>
+    <button onclick="testHealthCheck()">Run Health Check</button>
+    <div id="result">Click the button to test the API connection.</div>
+  </div>
+
+  <script>
+    async function testHealthCheck() {
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = 'Testing /api/health endpoint...';
+      resultDiv.className = '';
+
+      try {
+        const response = await fetch('/api/health');
+        const data = await response.json();
+
+        resultDiv.textContent = `Status: ${response.status} ${response.statusText}\n\nResponse Body:\n${JSON.stringify(data, null, 2)}`;
+
+        if (!response.ok || data.status !== 'ok') {
+          throw new Error(`Health check failed. Status: ${data.status || 'unknown'}`);
+        }
+
+        resultDiv.classList.add('success');
+      } catch (error) {
+        console.error('Health check fetch error:', error);
+        resultDiv.textContent = `Connection Failed!\n\nError: ${error.message}\n\nCheck the browser console and ensure the backend server is running and accessible.`;
+        resultDiv.classList.add('error');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "author": "",
+  "description": "AI Transaction Processing Chatbot for financial services",
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.44.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "postcss": "^8.5.3",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^4.1.2"
+  },
+  "keywords": [
+    "chatbot",
+    "ai",
+    "finance",
+    "openai",
+    "gpt-4"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "financial-chatbot",
+  "scripts": {
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "node start-dev.js",
+    "setup": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "postinstall": "echo \"Run 'npm run setup' to install all dependencies\""
+  },
+  "version": "0.1.0",
+  "dependencies": {
+    "tailwind": "^2.3.1"
+  }
+}

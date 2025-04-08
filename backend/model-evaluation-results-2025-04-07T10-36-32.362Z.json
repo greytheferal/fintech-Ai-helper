@@ -1,0 +1,465 @@
+{
+  "timestamp": "2025-04-07T10:36:32.363Z",
+  "intentAccuracy": 73.33333333333333,
+  "functionAccuracy": 70,
+  "testCases": 30,
+  "correctIntents": 22,
+  "correctFunctions": 21,
+  "results": [
+    {
+      "id": "tc001",
+      "query": "What's my current account balance?",
+      "category": "Account Information",
+      "expectedIntent": "balance_inquiry",
+      "detectedIntent": "balance_inquiry",
+      "expectedFunction": "get_account_balance",
+      "actualFunction": "get_account_balance",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "account_type": "all"
+      },
+      "response": null
+    },
+    {
+      "id": "tc002",
+      "query": "Can you show me my recent transactions?",
+      "category": "Account Information",
+      "expectedIntent": "transaction_status",
+      "detectedIntent": "transaction_status",
+      "expectedFunction": "get_transaction_status",
+      "actualFunction": "get_transaction_status",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "time_period": "recent"
+      },
+      "response": null
+    },
+    {
+      "id": "tc003",
+      "query": "What's the difference between APR and APY?",
+      "category": "Financial Education",
+      "expectedIntent": "financial_education",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "explain_financial_concept",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "concept": "APR vs APY",
+        "detail_level": "detailed"
+      },
+      "response": null
+    },
+    {
+      "id": "tc004",
+      "query": "How do I report a lost debit card?",
+      "category": "Card Services",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "escalation_request",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "escalate_to_human",
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {
+        "reason": "Lost or stolen debit card",
+        "urgency": "high",
+        "category": "account_issue"
+      },
+      "response": null
+    },
+    {
+      "id": "tc005",
+      "query": "Tell me about your savings account options",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "savings"
+      },
+      "response": null
+    },
+    {
+      "id": "tc006",
+      "query": "I think there's a fraudulent charge on my account",
+      "category": "Security",
+      "expectedIntent": "escalation_request",
+      "detectedIntent": "transaction_status",
+      "expectedFunction": "escalate_to_human",
+      "actualFunction": null,
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {},
+      "response": "I'm sorry to hear that you're seeing a charge you don't recognize. Let's take the necessary steps to address this. \n\nFirst, I can help you review recent transactions to identify any suspicious activity. However, for security reasons, I can't access your account details directly. You can review your recent transactions through your online banking portal or mobile banking app.\n\nIf you confirm there's a fraudulent charge, please contact our customer service immediately. They have the tools and authority to investigate the issue further and can assist you with disputing the charge. It's important to report fraudulent activity as soon as possible to limit any potential liability.\n\nRemember, never share sensitive account information such as your full account number, password, or PIN with anyone. Our bank representatives will never ask for this information. \n\nWould you like me to provide you with the contact details for our customer service?"
+    },
+    {
+      "id": "tc007",
+      "query": "How long does it take for a check deposit to clear?",
+      "category": "Deposits",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {
+        "concept": "check deposit clearing time"
+      },
+      "response": null
+    },
+    {
+      "id": "tc008",
+      "query": "What's the interest rate on your mortgage loans?",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "mortgages",
+        "information_needed": "rates"
+      },
+      "response": null
+    },
+    {
+      "id": "tc009",
+      "query": "How do I set up automatic payments?",
+      "category": "Digital Banking",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "set up automatic payments"
+      },
+      "response": null
+    },
+    {
+      "id": "tc010",
+      "query": "I need to transfer money to my savings account",
+      "category": "Money Movement",
+      "expectedIntent": "transaction_status",
+      "detectedIntent": "balance_inquiry",
+      "expectedFunction": "get_transaction_status",
+      "actualFunction": null,
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {},
+      "response": "Sure, I can guide you through the process. Here's how you can transfer money to your savings account:\n\n1. **Log in** to your online banking or mobile banking app.\n2. Navigate to the **\"Transfer Funds\"** or **\"Move Money\"** section.\n3. Select the account you want to transfer **from** (usually your checking account).\n4. Select your savings account as the account you want to transfer **to**.\n5. Enter the **amount** you want to transfer.\n6. Review the details and confirm the transfer.\n\nRemember, the transfer might not be immediate, especially if it's after business hours or on a weekend. It typically takes 1-2 business days for the transfer to complete.\n\nIf you're having trouble with any of these steps or if you need assistance with a more complex transfer, I can escalate this to a human agent who can help you further."
+    },
+    {
+      "id": "tc011",
+      "query": "What information do I need for a wire transfer?",
+      "category": "Money Movement",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "What information do I need for a wire transfer?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc012",
+      "query": "How do I dispute a transaction?",
+      "category": "Card Services",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "How do I dispute a transaction?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc013",
+      "query": "Can you explain overdraft protection?",
+      "category": "Financial Education",
+      "expectedIntent": "financial_education",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "explain_financial_concept",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "concept": "overdraft protection"
+      },
+      "response": null
+    },
+    {
+      "id": "tc014",
+      "query": "I want to open a new checking account",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "checking",
+        "information_needed": "requirements"
+      },
+      "response": null
+    },
+    {
+      "id": "tc015",
+      "query": "What's the difference between a debit and credit card?",
+      "category": "Financial Education",
+      "expectedIntent": "financial_education",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "explain_financial_concept",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "concept": "debit card vs credit card"
+      },
+      "response": null
+    },
+    {
+      "id": "tc016",
+      "query": "I forgot my online banking password",
+      "category": "Digital Banking",
+      "expectedIntent": "escalation_request",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "escalate_to_human",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {
+        "query": "How do I reset my password?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc017",
+      "query": "What are your CD rates right now?",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "certificates of deposit",
+        "information_needed": "rates"
+      },
+      "response": null
+    },
+    {
+      "id": "tc018",
+      "query": "How do I activate my new card?",
+      "category": "Card Services",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "How do I activate my new card?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc019",
+      "query": "Can I use my debit card internationally?",
+      "category": "Card Services",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "product_information",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {
+        "product_type": "checking",
+        "information_needed": "features"
+      },
+      "response": null
+    },
+    {
+      "id": "tc020",
+      "query": "How do I improve my credit score?",
+      "category": "Financial Education",
+      "expectedIntent": "financial_education",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "explain_financial_concept",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "concept": "improving credit score"
+      },
+      "response": null
+    },
+    {
+      "id": "tc021",
+      "query": "What's the minimum balance for a checking account?",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "checking",
+        "information_needed": "requirements"
+      },
+      "response": null
+    },
+    {
+      "id": "tc022",
+      "query": "How long do you keep bank statements?",
+      "category": "Account Information",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "How long do you keep bank statements?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc023",
+      "query": "I need to update my address",
+      "category": "Account Management",
+      "expectedIntent": "escalation_request",
+      "detectedIntent": "escalation_request",
+      "expectedFunction": "escalate_to_human",
+      "actualFunction": "escalate_to_human",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "reason": "Update address request",
+        "urgency": "medium",
+        "category": "account_issue"
+      },
+      "response": null
+    },
+    {
+      "id": "tc024",
+      "query": "Does your bank offer business loans?",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "loans",
+        "specific_product": "business loans"
+      },
+      "response": null
+    },
+    {
+      "id": "tc025",
+      "query": "How does mobile check deposit work?",
+      "category": "Digital Banking",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "faq_query",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "get_faq_answer",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "query": "How does mobile check deposit work?"
+      },
+      "response": null
+    },
+    {
+      "id": "tc026",
+      "query": "What is FDIC insurance?",
+      "category": "Financial Education",
+      "expectedIntent": "financial_education",
+      "detectedIntent": "financial_education",
+      "expectedFunction": "explain_financial_concept",
+      "actualFunction": "explain_financial_concept",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "concept": "FDIC insurance"
+      },
+      "response": null
+    },
+    {
+      "id": "tc027",
+      "query": "How much can I withdraw from an ATM per day?",
+      "category": "Account Information",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "product_information",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {
+        "product_type": "checking",
+        "information_needed": "features"
+      },
+      "response": null
+    },
+    {
+      "id": "tc028",
+      "query": "I need to order new checks",
+      "category": "Account Management",
+      "expectedIntent": "faq_query",
+      "detectedIntent": "escalation_request",
+      "expectedFunction": "get_faq_answer",
+      "actualFunction": null,
+      "intentCorrect": false,
+      "functionCorrect": false,
+      "functionArgs": {},
+      "response": "Sure, I can help guide you through the process of ordering new checks. However, for security reasons, I can't directly place the order for you. Here's how you can do it:\n\n1. Log into your online banking account.\n2. Navigate to the 'Services' or 'Order Checks' section. The exact location might vary depending on your bank's website.\n3. Follow the prompts to choose the check design and quantity you want.\n4. Confirm your shipping address and place the order.\n\nPlease note that there might be a fee associated with ordering checks, depending on your account type and the quantity of checks you order. If you have any issues or need further assistance, I recommend contacting customer service or visiting your local branch."
+    },
+    {
+      "id": "tc029",
+      "query": "How do I apply for a mortgage?",
+      "category": "Product Information",
+      "expectedIntent": "product_information",
+      "detectedIntent": "product_information",
+      "expectedFunction": "provide_product_information",
+      "actualFunction": "provide_product_information",
+      "intentCorrect": true,
+      "functionCorrect": true,
+      "functionArgs": {
+        "product_type": "mortgages",
+        "information_needed": "requirements"
+      },
+      "response": null
+    },
+    {
+      "id": "tc030",
+      "query": "Why is my transaction still pending?",
+      "category": "Account Information",
+      "expectedIntent": "transaction_status",
+      "detectedIntent": "transaction_status",
+      "expectedFunction": "get_transaction_status",
+      "actualFunction": null,
+      "intentCorrect": true,
+      "functionCorrect": false,
+      "functionArgs": {},
+      "response": "To assist you with this, I'll need to pull up some information about the transaction in question. Could you please provide me with the transaction ID or some details about the transaction such as the date, amount, or recipient? Please remember not to share any sensitive information such as full account numbers or passwords."
+    }
+  ]
+}

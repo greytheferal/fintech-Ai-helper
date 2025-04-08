@@ -1,0 +1,66 @@
+{
+  "dependencies": {
+    "axios": "^1.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "mysql2": "^3.14.0",
+    "openai": "^4.0.0",
+    "uuid": "^9.0.0"
+  },
+  "description": "Backend for the AI Transaction Processing Chatbot",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "eslint": "^8.44.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^7.0.0"
+  },
+  "main": "src/index.js",
+  "name": "financial-chatbot-backend",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "lint": "eslint .",
+    "start": "node src/index.js",
+    "test": "jest --coverage",
+    "populate-db": "node populate-database.js",
+    
+    "setup:env": "node src/scripts/setup-env.js",
+    "setup:database": "node src/scripts/setup-database.js",
+    "setup:all": "npm run setup:env && npm run setup:database",
+    "test:mysql": "node src/scripts/test-mysql-connection.js",
+    "add:sample-data": "node src/scripts/add-sample-data.js",
+    "inspect:schema": "node src/scripts/inspect-schema.js",
+    
+    "fix-database": "node fix-database.js",
+    "emergency-fix": "node emergency-db-fix.js",
+    "start-fixed": "node src/start-fixed.js",
+    "test:model": "node src/tests/run-model-tests.js",
+    "test:simple": "node src/tests/run-simple-tests.js",
+    "test:rag": "node src/tests/testRagSystem.js",
+    "db:init": "node src/database/dbManager.js init",
+    "db:reset": "node src/database/dbManager.js reset --confirm",
+    "db:seed-faqs": "node src/scripts/seedFaqs.js",
+    "db:insert-sample-faqs": "node src/insert-sample-faqs.js",
+    "db:test-connection": "node src/scripts/testMySqlConnection.js",
+    "db:setup": "node src/db-setup.js",
+    "db:diagnose": "node src/db-test.js",
+    "db:fix-connection": "node src/fix-connection-name.js",
+    "db:fix-ssl": "node src/fix-ssl.js",
+    "db:fix-env": "node src/fix-env.js",
+    "db:direct-test": "node src/direct-test.js",
+    "db:force-fix": "node src/force-update-db-name.js",
+    "embeddings:optimize": "node src/scripts/embeddingsTools.js --optimize",
+    "embeddings:diagnose": "node src/scripts/embeddingsTools.js --diagnose",
+    "embeddings:regenerate": "node src/scripts/embeddingsTools.js --regenerate",
+    "embeddings:prune": "node src/scripts/embeddingsTools.js --prune --days 30",
+    
+    "train:model": "node src/scripts/populate-training-data-fixed.js",
+    "evaluate:model": "node src/scripts/evaluate-model.js",
+    "generate:docs": "node src/scripts/generate-documentation.js",
+    "custom-gpt:complete": "npm run train:model && npm run evaluate:model && npm run generate:docs"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}
